@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Local School Library </h1>
+
+  <p>Welcome to <em>SchoolLibrary</em>, an ongoing developement project to numerise books</p>
+
+<h2>Dynamic content</h2>
+<div class="main-content"
+
+  <p><strong>library has the following record counts:</strong> </p>
+  <ul>
+    <li><strong>Books:</strong> {{ num_books }}</li>
+    <li><strong>Copies:</strong> {{ num_instances }}</li>
+    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+    <li><strong>Authors:</strong> {{ num_authors }}</li>
+  </ul>
+<div class="row" style="display:inline-block">
+  <span>
+  <form action="{% url 'book_create' %}" method="post">{% csrf_token %}
+    <input type="submit" value="Add a book" />
+  </form>
+  </span>
+
+  <span>
+  <form action="{% url 'author_create' %}" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Add an author" />
+  </form>
+  </span>
+</div>
+
+
+<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+
+{% endblock %}

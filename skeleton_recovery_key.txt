@@ -1,0 +1,1 @@
+SECRET_KEY = '8x6k$u=mtm-_vop_7w3^tn(vwhcp^0&ax+m1j63u&*-p$w+-xz'
